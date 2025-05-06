@@ -1,0 +1,33 @@
+{
+  "name": "planiversary",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:api": "npm run dev:https -w @planiversary/api",
+    "dev:web": "npm run dev:https -w @planiversary/web",
+    "build": "npm-run-all --parallel build:*",
+    "build:api": "npm run build -w @planiversary/api",
+    "build:web": "npm run build -w @planiversary/web",
+    "start": "npm-run-all --parallel start:*",
+    "start:api": "npm run start -w @planiversary/api",
+    "start:web": "npm run start -w @planiversary/web",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:api": "npm run lint -w @planiversary/api",
+    "lint:web": "npm run lint -w @planiversary/web",
+    "test": "npm-run-all --parallel test:*",
+    "test:api": "npm run test --workspace=apps/api",
+    "test:web": "npm run test --workspace=apps/web"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "@prisma/client": "6.7.0",
+    "prisma": "6.7.0"
+  }
+}

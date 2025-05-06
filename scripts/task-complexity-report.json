@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "generatedAt": "2025-04-26T06:18:28.803Z",
+    "tasksAnalyzed": 10,
+    "thresholdScore": 5,
+    "projectName": "Your Project Name",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Set up project infrastructure",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the project infrastructure setup into specific technical subtasks covering Next.js frontend setup, Express backend configuration, database setup, environment configuration, and connection between systems.",
+      "reasoning": "This task involves setting up multiple technologies (Next.js, TailwindCSS, Express, PostgreSQL, Redis) and establishing connections between them. It also requires environment configuration and HTTPS setup, making it moderately complex with several distinct components."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Implement user authentication system",
+      "complexityScore": 8,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Divide the authentication system implementation into specific subtasks covering JWT implementation, user registration/login UI, OAuth integration, profile management, password reset functionality, protected routes, and database security.",
+      "reasoning": "Authentication is highly complex due to security requirements, multiple authentication methods (JWT, OAuth), and the need for both frontend and backend components. It involves sensitive data handling, encryption, and session management across multiple systems."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Create core data models and database schema",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the database schema creation into subtasks for each major data model (User, Event, Vendor, Task, RSVP), including relationship design, migration setup, and data access layer implementation.",
+      "reasoning": "This task requires designing multiple interrelated data models with proper relationships. While conceptually straightforward, it requires careful planning to ensure the schema supports all application features and maintains data integrity."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Build Date Planning Wizard UI and flow",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the Date Planning Wizard implementation into subtasks covering UI component creation, state management, form validation, recommendation display, backend API endpoints, and responsive/accessible design.",
+      "reasoning": "This task involves creating a multi-step wizard with complex state management, form validation, and backend integration. The UI must be responsive and accessible, adding to the complexity. It also requires implementing recommendation logic."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Integrate Yelp API for venue and activity discovery",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the Yelp API integration into subtasks covering API client setup, search functionality implementation, caching mechanism, error handling, and data transformation/normalization.",
+      "reasoning": "This task involves external API integration with Yelp, requiring proper error handling, rate limit management through caching, and data transformation. While technically challenging, it has a focused scope compared to other tasks."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Develop Party Planning Organizer UI and flow",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the Party Planning Organizer implementation into subtasks covering wizard UI components, theme/venue recommendation system, task management interface, backend endpoints, form validation, and responsive design.",
+      "reasoning": "Similar to the Date Planning Wizard, this task requires a multi-step UI with complex state management. It also includes additional components like theme browsing, venue selection, and task management, increasing its complexity."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Implement event dashboard",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the event dashboard implementation into subtasks covering dashboard UI design, detailed event view, filtering/sorting functionality, backend API endpoints, event editing components, and task management interface.",
+      "reasoning": "The dashboard requires multiple views and components with complex data interactions. It needs to display and manage various types of data (events, activities, tasks, guests) with filtering and sorting capabilities, making it moderately complex."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Create email invitation system with SendGrid",
+      "complexityScore": 5,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the email invitation system into subtasks covering SendGrid API integration, email template creation, invitation form UI, backend endpoints for sending emails, and tracking/status functionality.",
+      "reasoning": "This task involves external API integration with SendGrid and creating email templates. While it requires careful error handling and tracking, it has a more focused scope than some of the other tasks."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Build RSVP tracking functionality",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the RSVP tracking functionality into subtasks covering RSVP landing page creation, response collection forms, organizer dashboard, backend endpoints, and notification system.",
+      "reasoning": "This task requires creating both public-facing RSVP pages and organizer dashboards with real-time updates. It involves multiple components and notification systems, but has a relatively focused scope."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Implement basic vendor integration for recommendations",
+      "complexityScore": 5,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Divide the vendor integration into subtasks covering UI components for vendor display, save functionality, comparison view implementation, and backend endpoints for vendor management.",
+      "reasoning": "This task builds on the existing Yelp API integration, focusing on UI components and basic functionality for vendor management. While it involves multiple components, it's less complex than core system features."
+    }
+  ]
+}

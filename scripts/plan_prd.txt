@@ -1,0 +1,134 @@
+<context>
+
+# Overview  
+Planiversary is a web application that simplifies personalized event planning for dates and parties. It solves the fragmentation and stress associated with coordinating multiple platforms by consolidating event discovery, booking, budget management, and communication in one place. It is designed for individuals planning meaningful dates or organizing parties for kids and adults. Planiversary is valuable because it offers a curated, localized, and fully managed planning experience.
+
+# Core Features  
+
+**Date Planning Wizard**  
+- **What it does**: Guides users through a multi-step wizard to generate personalized date itineraries based on location, budget, mobility, and time constraints.  
+- **Why it's important**: Helps users create meaningful, customized date experiences with minimal effort.  
+- **How it works**: Collects user preferences → Calls external APIs (Yelp, Google Places, Eventbrite) → Generates curated, bookable date plans.
+
+**First-Date Survey System**  
+- **What it does**: Sends a survey to the prospective date to gather preference information anonymously.  
+- **Why it's important**: Ensures a personalized and appropriate first-date experience when preferences are unknown.  
+- **How it works**: Creates a survey link → Collects and stores responses → Refines the date plan based on new data.
+
+**Party Planning Organizer**  
+- **What it does**: Assists users in planning parties by recommending themes, venues, supplies, activities, and managing invitations and RSVPs.  
+- **Why it's important**: Reduces complexity and effort in organizing parties for different age groups and audiences.  
+- **How it works**: Gathers event type and audience data → Suggests themes and venues → Manages invitations, tasks, and RSVPs.
+
+**Vendor Integration and Fulfillment Manager**  
+- **What it does**: Connects users with vendors for reservations, ticket purchases, supply orders, and manages the full booking and payment process.  
+- **Why it's important**: Centralizes event logistics and purchasing into a single system.  
+- **How it works**: Interfaces with APIs (OpenTable, Ticketmaster, Etsy, Amazon) → Manages booking, confirmation, and payments.
+
+**Guest Communication and RSVP Tracking**  
+- **What it does**: Sends event invitations via email or SMS and tracks guest responses.  
+- **Why it's important**: Streamlines guest management and improves organization visibility.  
+- **How it works**: Sends communication through SendGrid/Twilio → Updates and displays RSVP status in real time.
+
+# User Experience  
+
+**User Personas**  
+- Alex: Busy professional planning a unique first date.  
+- Jamie: Parent organizing a child’s birthday party.  
+- Taylor: Friend coordinating a surprise adult birthday party.
+
+**Key User Flows**  
+- User creates an account ➔ Selects "Plan a Date" or "Plan a Party" ➔ Completes a guided wizard ➔ Reviews recommended plans ➔ Books vendors and sends invites ➔ Manages guests and tasks through a dashboard.
+
+**UI/UX Considerations**  
+- Mobile-first responsive design.  
+- Clean, guided wizard flows for easy input collection.  
+- Visual previews of venues, themes, and event plans.  
+- Accessible forms and navigation, supporting screen readers and keyboard use.
+
+</context>
+
+<PRD>
+
+# Technical Architecture  
+
+**System Components**  
+- Frontend: Next.js with TailwindCSS.  
+- Backend: Node.js (Express or Fastify).  
+- Database: PostgreSQL (primary storage), Redis (caching).  
+- Background Jobs: BullMQ for task scheduling (reminders, retries).  
+- Storage: AWS S3 (optional, for media like invite images).
+
+**Data Models**  
+- User: id, name, contact info, preferences.  
+- Event: id, userId, type (date/party), details, budget, status.  
+- Vendor: id, apiId, name, type, location, costRange.  
+- Task: id, eventId, description, dueDate, status.  
+- RSVP: id, eventId, guestName, email/phone, responseStatus.
+
+**APIs and Integrations**  
+- Yelp Fusion API: Activity and restaurant discovery.  
+- Google Places API: Location-based service search.  
+- Eventbrite API: Ticketed event discovery.  
+- OpenTable API: Restaurant reservation booking.  
+- Etsy API: Decorations and supplies.  
+- SendGrid API: Email invitations and confirmations.  
+- Twilio API: SMS invitations and notifications.  
+- Stripe API: Payment processing.  
+- Google Calendar API: Calendar event integration.
+
+**Infrastructure Requirements**  
+- Hosting: AWS EC2/Lambda or Vercel for frontend, AWS backend services.  
+- Security: HTTPS everywhere, JWT authentication, OAuth login.  
+- Monitoring: Sentry or Datadog for application monitoring.
+
+# Development Roadmap  
+
+**MVP Requirements**  
+- User registration and login system.  
+- Basic "Plan a Date" wizard flow with static activity recommendations.  
+- Basic "Plan a Party" wizard flow with static themes and invite templates.  
+- Yelp API integration for venue and activity discovery.  
+- Basic RSVP tracking with email invitations (SendGrid integration).  
+- Event dashboard to manage booked activities and guest lists.
+
+**Future Enhancements**  
+- OpenTable and Eventbrite integrations for real-time bookings.  
+- Stripe payment system for reservations and ticket purchases.  
+- Twilio SMS support for invitations and reminders.  
+- First-date survey generation and response handling.  
+- Full vendor order automation for supplies (Etsy/Amazon APIs).  
+- Budget tracker per event with dynamic cost updates.  
+- Calendar synchronization for planned events.  
+- Mobile app/PWA for improved mobile user experience.
+
+# Logical Dependency Chain  
+
+- User authentication and profile setup must be built first.  
+- Core wizards (date planner and party planner) should be built next to allow early user flow testing.  
+- Vendor search integrations (Yelp) should follow to populate suggestions.  
+- Event creation and management (task lists, dashboard) needs to be implemented after basic flows are stable.  
+- Communication system (email invites) should come next to support RSVP tracking.  
+- Booking/payment integration, first-date surveys, and real-time vendor management should be layered in later phases.  
+- Calendar sync, supply ordering, and mobile enhancements should be reserved for post-MVP expansion.
+
+# Risks and Mitigations  
+
+- Technical Challenges: Integration limits or instability from third-party APIs (e.g., Yelp daily limits).  
+  - Mitigation: Cache results, queue search requests, fallback APIs.  
+- MVP Scope Creep: Risk of trying to integrate too many APIs initially.  
+  - Mitigation: Lock MVP to Yelp search + static party templates only.  
+- Payment and Security Compliance: Handling sensitive user data and transactions.  
+  - Mitigation: Use Stripe Elements, store no raw payment data, enforce HTTPS, monitor for vulnerabilities.  
+- Vendor Availability Gaps: Vendors may not always have complete information.  
+  - Mitigation: Allow manual overrides for user-selected vendors when automatic booking fails.
+
+# Appendix  
+
+- Research Findings: Users prefer curated experiences to large lists of choices when under time pressure. Date and party planning are most successful when suggestion lists are under 10 options.  
+- Technical Specifications:  
+  - API call rate limit handling and retries.  
+  - GDPR compliance for user data.  
+  - Serverless fallback options if scaling beyond MVP needs.
+
+</PRD>

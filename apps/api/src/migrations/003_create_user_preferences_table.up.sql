@@ -1,6 +1,6 @@
 -- Create user_preferences table
 CREATE TABLE IF NOT EXISTS user_preferences (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   default_location VARCHAR(255),
   default_location_lat DECIMAL(10, 8),

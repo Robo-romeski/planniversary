@@ -338,14 +338,17 @@ export class UserController {
   public async getUserPreferences(req: Request, res: Response): Promise<Response> {
     try {
       const userId = (req as any).user.id;
+      console.log('[getUserPreferences] userId:', userId);
       const preferences = await this.userPreferencesRepository.findByUserId(userId);
-      
+      console.log('[getUserPreferences] preferences query result:', preferences);
       if (!preferences) {
+        console.log('[getUserPreferences] No preferences found for userId:', userId);
         return res.status(404).json({ error: 'User preferences not found' });
       }
-
+      console.log('[getUserPreferences] Returning preferences for userId:', userId);
       return res.json(preferences);
     } catch (error) {
+      console.error('[getUserPreferences] Error:', error);
       return res.status(500).json({ error: 'Failed to retrieve user preferences' });
     }
   }

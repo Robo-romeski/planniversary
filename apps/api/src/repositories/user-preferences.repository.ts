@@ -6,11 +6,19 @@ export class UserPreferencesRepository {
 
   public async findByUserId(userId: string): Promise<UserPreferences | null> {
     try {
+      console.log('[findByUserId] Querying user_preferences with userId:', userId);
       const result = await db.query(
         `SELECT * FROM ${this.tableName} WHERE user_id = $1`,
         [userId]
       );
-      return result.rows[0] || null;
+      console.log('[findByUserId] Raw query result:', result);
+      if (result && result.length > 0) {
+        console.log('[findByUserId] Returning first row:', result[0]);
+        return result[0];
+      } else {
+        console.log('[findByUserId] No rows found for userId:', userId);
+        return null;
+      }
     } catch (error) {
       console.error('Error finding user preferences:', error);
       throw error;

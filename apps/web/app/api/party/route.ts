@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     if (!data.name || !data.date || !data.location) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
-    const newParty = await prisma.party.create({
+    const newParty = await prisma.parties.create({
       data: {
         name: data.name,
         date: data.date,
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
 export async function GET() {
   try {
-    const parties = await prisma.party.findMany();
+    const parties = await prisma.parties.findMany();
     return NextResponse.json(parties);
   } catch (err) {
     return NextResponse.json({ error: 'Failed to fetch parties' }, { status: 500 });

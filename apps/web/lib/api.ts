@@ -158,12 +158,15 @@ export async function addGuestsToParty(partyId: string, guests: { name: string, 
 }
 
 export async function fetchPartySuggestions(partyId: string) {
+  console.log('[fetchPartySuggestions] Fetching:', `/api/party/${partyId}/suggestions`);
   const res = await fetch(`/api/party/${partyId}/suggestions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
   if (!res.ok) throw new Error('Failed to fetch party suggestions');
-  return res.json();
+  const data = await res.json();
+  console.log('[fetchPartySuggestions] Response:', data);
+  return data;
 }
 
 export async function submitRSVP(partyId: string, rsvp: { name: string, email: string, response: string }) {

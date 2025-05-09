@@ -37,19 +37,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(apiLimiter);
 
 // Health check endpoint (no rate limit)
-app.get('/health', (req, res) => {
-    res.json({ status: 'ok' });
-});
+// app.get('/health', (req, res) => {
+//     res.json({ status: 'ok' });
+// });
 
 // API v1 health check (for frontend proxy compatibility)
 app.get('/api/v1/health', (req, res) => {
-    res.json({ status: 'ok', version: 'v1' });
+  console.log('[HEALTHCHECK]', {
+    timestamp: new Date().toISOString(),
+    userAgent: req.headers['user-agent'],
+    referer: req.headers['referer']
+  });
+  res.json({ status: 'ok', version: 'v1' });
 });
 
 // API v1 message test endpoint
-app.get('/api/v1/message', (req, res) => {
-    res.json({ message: 'API v1 is working!' });
-});
+// app.get('/api/v1/message', (req, res) => {
+//     res.json({ message: 'API v1 is working!' });
+// });
 
 // Test database connection
 app.get('/api/test', async (req, res) => {

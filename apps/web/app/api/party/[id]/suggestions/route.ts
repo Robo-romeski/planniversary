@@ -1,13 +1,7 @@
 import { NextResponse } from 'next/server';
-import { mockParties } from '../../../_mockPartyStore';
 
 export async function POST(req: Request, { params }: { params: { id: string } }) {
-  const { id } = params;
-  const party = mockParties.find((p: any) => p.id === id);
-  if (!party) {
-    return NextResponse.json({ error: 'Party not found' }, { status: 404 });
-  }
-  // Static/mock suggestions
+  // Always return static suggestions for now
   const suggestions = [
     {
       id: '1',

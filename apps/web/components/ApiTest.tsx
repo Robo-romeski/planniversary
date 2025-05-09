@@ -1,3 +1,5 @@
+// Disabled: This component is commented out because the backend health check endpoints are disabled for development.
+/*
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -112,4 +114,5 @@ export default function ApiTest() {
       </div>
     </div>
   );
-} 
+}
+*/ 

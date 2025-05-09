@@ -3,6 +3,9 @@ import { prisma } from '@/lib/prisma';
 
 export async function POST(req: Request, { params }: { params: { id: string } }) {
   const { id } = params;
+  if (!id || isNaN(Number(id))) {
+    return NextResponse.json({ error: 'Invalid party ID' }, { status: 400 });
+  }
   try {
     const data = await req.json();
     const { name, email, response } = data;

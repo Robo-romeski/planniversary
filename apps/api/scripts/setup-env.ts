@@ -34,9 +34,7 @@ RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX=100
 `;
 
-const webEnvTemplate = `# Next.js environment
-NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1
-`;
+const webEnvTemplate = ``;
 
 const writeEnvFile = (filePath: string, content: string) => {
   const envPath = path.resolve(filePath);

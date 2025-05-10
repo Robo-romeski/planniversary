@@ -9,6 +9,7 @@ import { validateRequest } from './middleware/validation.middleware';
 import { authRoutes } from './routes/auth.routes';
 import { userRoutes } from './routes/user.routes';
 import { db } from './config/database';
+import partyRoutes from './routes/party.routes';
 
 const app = express();
 
@@ -72,6 +73,7 @@ app.use('/auth', authLimiter, authRoutes);
 
 // API routes
 app.use('/api/users', userRoutes);
+app.use('/api/party', partyRoutes);
 
 // Error handling
 app.use(errorHandler);

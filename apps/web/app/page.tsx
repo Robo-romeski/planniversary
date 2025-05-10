@@ -20,6 +20,9 @@ export default function Home() {
         <Link href="/party-wizard" className="text-blue-600 hover:underline text-lg py-4">
           Party Planning Wizard
         </Link>
+        <Link href="/party-dashboard" className="text-blue-600 hover:underline text-lg py-4">
+          Party Dashboard
+        </Link>
       </nav>
       <div className="flex flex-col items-center justify-center w-full min-h-screen pt-16">
         <h1 className="text-4xl font-bold mb-8 text-center text-orange-500">Welcome to Planiversary</h1>

@@ -20,7 +20,6 @@ class ApiClient {
 
   private constructor() {
     this.client = axios.create({
-      baseURL: process.env.NEXT_PUBLIC_API_URL,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -176,5 +175,23 @@ export async function submitRSVP(partyId: string, rsvp: { name: string, email: s
     body: JSON.stringify(rsvp),
   });
   if (!res.ok) throw new Error('Failed to submit RSVP');
+  return res.json();
+}
+
+export async function updateParty(partyId: string, partyData: any) {
+  const res = await fetch(`/api/party/${partyId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(partyData),
+  });
+  if (!res.ok) throw new Error('Failed to update party');
+  return res.json();
+}
+
+export async function deleteParty(partyId: string) {
+  const res = await fetch(`/api/party/${partyId}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) throw new Error('Failed to delete party');
   return res.json();
 } 
